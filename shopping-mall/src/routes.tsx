@@ -1,32 +1,30 @@
+import React, { lazy } from "react";
+import GlobalLayout from "./pages/_layout";
 
-import React from 'react';
-import GlobalLayout from './pages/_layout'
-
-const DynamicIndex = React.lazy(() => import('./pages/index'));
-const DynamicCartIndex = React.lazy(() => import('./pages/cart/index'));
-const DynamicPaymentsIndex = React.lazy(() => import('./pages/payments/index'));
-const DynamicProductsIndex = React.lazy(() => import('./pages/products/index'));
-const DynamicProductsId = React.lazy(() => import('./pages/products/[id]'));
-
+const Index = React.lazy(() => import("./pages/index"));
+const CartIndex = React.lazy(() => import("./pages/cart/index"));
+const PaymentsIndex = React.lazy(() => import("./pages/payments/index"));
+const ProductsIndex = React.lazy(() => import("./pages/products/index"));
+const ProductsId = React.lazy(() => import("./pages/products/[id]"));
 
 export const routes = [
   {
-    path: '/',
+    path: "/",
     element: <GlobalLayout />,
     children: [
-      { path: '/', element: <DynamicIndex />, index: true},
-      { path: '/cart', element: <DynamicCartIndex />, index: true},
-      { path: '/payments', element: <DynamicPaymentsIndex />, index: true},
-      { path: '/products', element: <DynamicProductsIndex />, index: true},
-      { path: '/products/:id', element: <DynamicProductsId />, },
-    ]
-  }
-]
+      { path: "/", element: <Index />, index: true },
+      { path: "/cart", element: <CartIndex />, index: true },
+      { path: "/payments", element: <PaymentsIndex />, index: true },
+      { path: "/products", element: <ProductsIndex />, index: true },
+      { path: "/products/:id", element: <ProductsId /> },
+    ],
+  },
+];
 
 export const pages = [
-  { route: '/' },
-  { route: '/cart' },
-  { route: '/payments' },
-  { route: '/products' },
-  { route: '/products/:id' },
-]
+  { route: "/" },
+  { route: "/cart" },
+  { route: "/payments" },
+  { route: "/products" },
+  { route: "/products/:id" },
+];
